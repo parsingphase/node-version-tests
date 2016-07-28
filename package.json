@@ -19,7 +19,8 @@
     "grunt-contrib-watch": "*",
     "grunt-newer": "^1.2.0",
     "grunt-phpcs": "^0.2.2",
-    "less": "^2.7.1"
+    "less": "^2.7.1",
+    "npm-shrinkwrap": "^200.5.1"
   },
   "dependencies": {
     "Respond.js": "scottjehl/Respond#1.4.2",
