@@ -54,8 +54,5 @@
     "angular-resource": "~1.2.29",
     "angular-cookies": "~1.2.29",
     "fileapi": "^2.0.20"
-  },
-  "scripts": {
-    "postinstall": "grunt"
   }
 }
