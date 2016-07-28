@@ -17,6 +17,51 @@ module.exports = function (grunt) {
                 ]
             }
         },
+        copy: {
+            less: {
+                files: [
+                    {
+                        // copy less files to a .../bootstrap directory which we can add to path as expected by styles.less
+                        expand: true,
+                        cwd: 'node_modules/bootstrap/less',
+                        src: '**',
+                        dest: 'built/tmp/less/bootstrap'
+                    }
+                ]
+            }
+        },
+        less: {
+            bootstrap: {
+                options: {
+                    sourceMap: true,
+                    cleancss: false,
+                    paths: [
+                        'built/tmp/less', // bootstrap file base
+                        'src/less'       // own less files
+                    ]
+                },
+                files: [{
+                    src: ['src/less/style.less'],
+                    dest: 'built/less/built.css'
+                }]
+            }
+        },
+        uglify: {
+            options: {
+                mangle: false,
+                preserveComments: false,
+                // exportAll: true,
+                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+                '<%= grunt.template.today("yyyy-mm-dd") %> */',
+                sourceMap: true
+            },
+            js: {
+                files: [{
+                    src: ['src/js/script.js', 'node_modules/angular/angular.js'],
+                    dest: 'built/js/script.js'
+                }]
+            }
+        },
         clean: {
             built: [
                 // individual clean tasks can't assume these are completely un-needed
@@ -26,6 +71,7 @@ module.exports = function (grunt) {
 
     });
 
+    // List of NPM tasks on main project - not all used in testing
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-bless');
@@ -36,11 +82,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-    // ///////////// v3 tasks ///////////////
+    // ///////////// tasks ///////////////
 
     grunt.registerTask(
         'default',
         'Test build',
-        ['imagemin:pix']
+        ['copy', 'imagemin:pix', 'less:bootstrap', 'uglify:js']
     );
 };
