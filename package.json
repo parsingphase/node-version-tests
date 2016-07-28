@@ -1,5 +1,6 @@
 {
-  "name": "Test",
+  "name": "node-version-tests",
+  "description": "Test various versions of node dependencies against various node versions via travis",
   "version": "0.0.0",
   "repository": {
     "type": "git",
@@ -45,14 +46,5 @@
     "parsleyjs": "^2.4.3",
     "responsive-toolkit": "^2.6.3",
     "typeahead.js": "^0.11.1"
-  },
-  "unusedDeps": {
-    "_note": "mostly found in public_html/static/v3/assets/js/angular but not in build tool",
-    "angular-sanitize": "~1.2.29",
-    "angular-touch": "~1.2.29",
-    "angular-loader": "~1.2.29",
-    "angular-resource": "~1.2.29",
-    "angular-cookies": "~1.2.29",
-    "fileapi": "^2.0.20"
   }
 }
