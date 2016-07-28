@@ -16,6 +16,8 @@ matrix:
     - node_js: "0.12"
     - node_js: "4.0"
     - node_js: "4.4"
+    - node_js: "5.0"
+    - node_js: "iojs"
 os:
   - linux
 before_install:
